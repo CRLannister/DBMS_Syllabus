@@ -8,8 +8,8 @@ pip install -r requirements.txt #for virtual env reqirement
 
 2.) for running services create a user, according to settings use credentials file for user and password... also create a database in postgresql...for simplicity use data_entry as database name...
 
-3.)django 
-python3 manage.py makemigrations
-python3 manage.py migrate
+3.)django \
+python3 manage.py makemigrations\
+python3 manage.py migrate\
 python3 manage.py runserver
 
