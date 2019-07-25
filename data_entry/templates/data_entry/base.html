@@ -1,0 +1,85 @@
+{%load staticfiles%}
+{%load static%}
+{%block content%}
+  <style>
+  .col1{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+  }
+  .col3{
+    padding:20px 0px 20px 0px;
+  }
+    .row1{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    .row2{
+      /* display: block; */
+      text-align: center;
+    }
+    .row3{
+      position: relative;
+      left:50%;
+
+    }
+    .info {
+      color:white;
+    }
+    #grid {
+  display: grid;
+  /* grid-template-rows: repeat(9, 1fr); */
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 30px;
+  }
+  #grid > div {
+    background-color: #5bc0de;
+    color: white;
+    font-size: 1vw;
+    padding: 10px;
+    border-radius:8px;
+
+  }
+  .hello{
+    padding:0px 30px 0px 30px;
+  }
+  </style>
+
+  <div class="col1">
+    <div class="row2">
+      <h1 class="text-white" style="font-weight:bold;font-size:40px;">Syllabus</h1>
+      <h2 class="text-white"> Pulchowk Campus, Lalitpur </h2>
+    </div>
+    <!-- <br />
+    <br />
+    <br />
+    <br /> -->
+    </div>
+    <div class="col3">
+      <p class="hoverZoom">
+      </p>
+    </div>
+  <span class="row1">
+
+<div id="grid">
+
+<div class="hoverZoom">
+<h7 style="color:#35495E"><b></b></h7>
+</div>
+
+</div>
+
+  </span>
+  <br>
+  <br>
+
+  {%if messages%}
+  {%for message in messages%}
+  <div class="alert alert-{{message.tags}}">
+    {{message}}
+  </div>
+  {%endfor%}
+  {%endif%}
+{%endblock%}

@@ -1,0 +1,44 @@
+$(document).ready(function(){
+ $(".collapseEmpty").collapse('show');
+$(".collapse1").click(function(){
+	 $(".collapseExample2").collapse('hide');
+		$(".collapseExample3").collapse('hide');
+		$(".collapseExample4").collapse('hide');
+		$(".collapseExample5").collapse('hide');
+			$(".collapseEmpty").collapse('hide');
+	$(".collapseExample1").collapse('toggle');
+
+});
+$(".collapse2").click(function(){
+	$(".collapseExample1").collapse('hide');
+	$(".collapseExample3").collapse('hide');
+	$(".collapseExample4").collapse('hide');
+	$(".collapseExample5").collapse('hide');
+		$(".collapseEmpty").collapse('hide');
+$(".collapseExample2").collapse('toggle');
+});
+$(".collapse3").click(function(){
+	$(".collapseExample1").collapse('hide');
+ $(".collapseExample2").collapse('hide');
+ $(".collapseExample4").collapse('hide');
+ $(".collapseExample5").collapse('hide');
+	$(".collapseEmpty").collapse('hide');
+$(".collapseExample3").collapse('toggle');
+});
+$(".collapse4").click(function(){
+ $(".collapseExample1").collapse('hide');
+	$(".collapseExample2").collapse('hide');
+$(".collapseExample3").collapse('hide');
+$(".collapseExample5").collapse('hide');
+	$(".collapseEmpty").collapse('hide');
+$(".collapseExample4").collapse('toggle');
+});
+$(".collapse5").click(function(){
+ $(".collapseExample1").collapse('hide');
+$(".collapseExample2").collapse('hide');
+$(".collapseExample3").collapse('hide');
+$(".collapseExample4").collapse('hide');
+	$(".collapseEmpty").collapse('hide');
+$(".collapseExample5").collapse('toggle');
+});
+});

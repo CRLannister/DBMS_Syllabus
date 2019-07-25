@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	{% load static %}
+  <title>Ioe Syllabus Management System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="{% static 'dataEntry/vendor/bootstrap/css/bootstrap.min.css' %}" />
+                <link rel="shortcut icon" href="{% static 'dataEntry/images/favicon.ico' %}">
+                <link rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/normalize.css' %}" />
+                <link rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/demo.css' %}" />
+                <link rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/component.css' %}" />
+                <script src="{% static 'dataEntry/js/modernizr.custom.js' %}"></script>
+                <script src="{% static 'dataEntry/vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
+                <script src="{% static 'dataEntry/vendor/ajax/libs/popper/1.14.6/umd/popper.min.js' %}"></script>
+                <script src="{% static 'dataEntry/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="topbar"></div>
+<div class="container">
+
+<div class="row">
+<div class="col-md-2 " >
+	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="70em" alt="Tu logo"/>	
+</div>
+  <div class="col-md-10" id="page-header">
+	  <h2><center>Department of Electronics and Computer Engineering</center></h2>
+	  <h4><center>Pulchowk Campus, Institute of Engineering, Tribhuvan University</center></h4>
+  </div> 
+</div>
+<!-- <div class="part">Part
+  <select id="select_part">
+      <option></option>
+      <option>1</option>
+      <option>2</option>
+
+  </select>
+</div> -->
+<div class="row">
+<div class="col-md-3">
+  <select id="select_degree" class="container">
+	  <option value="0">Programs</option>
+	  <option value="1">Masters</option>
+	  <option value="2">Bachelors</option>
+  
+
+
+
+</select>
+</div>
+<div class="col-md-3">
+    <select id="select_faculty" class="container">
+	  <option value="0">Course of Study</option>
+	  <option value="1">BCT</option>
+	  <option value="2">BEX</option>
+	  <option value="3">BCE</option>
+	  <option value="4">BME</option>
+	  <option value="5">BEL</option>
+	  <option value="6">MSICE</option>
+	  <option value="7">MSCSKE</option>
+
+</select>
+</div>
+<div class="col-md-3">
+    <select id="select_sem" class="container">
+	  <option value="0">Semesters</option>
+	  <option value="1">Semester 1</option>
+	  <option value="2">Semester 2</option>
+	  <option value="3">Semester 3</option>
+	  <option value="4">Semester 4</option>
+	  <option value="5">Semester 5</option>
+	  <option value="6">Semester 6</option>
+	  <option value="7">Semester 7</option>
+	  <option value="8">Semester 8</option>
+
+</select>
+</div>
+<div class="col-md-3" class="container">
+    <button onclick="func()">process</button>
+</div>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script >
+
+function func(){
+
+     var faculty = document.getElementById("select_faculty").value;
+     var semester = document.getElementById("select_sem").value;
+     console.log("dfbnm,");
+
+
+}
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

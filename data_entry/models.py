@@ -36,7 +36,8 @@ class Syllabus(models.Model):
 
 
 	syllabus_id = models.AutoField(primary_key=True)
-	program = models.ManyToManyField(Program)
+	program = models.ForeignKey(Program, on_delete=models.CASCADE)
+	syllabus_name = models.CharField(max_length=50,  help_text='BCT_I_I_Part')
 	# syllabus_code = models.CharField(max_length=40)
 	year = models.IntegerField()
 	part = models.IntegerField()
@@ -53,7 +54,7 @@ class Syllabus(models.Model):
 
 
 	def __str__(self):
-		return '%s :%s/%s' % (str(self.syllabus_id),str(self.year), str(self.part))
+		return '%s ' % (str(self.syllabus_name))
 
 
 
@@ -64,7 +65,7 @@ class Syllabus(models.Model):
 class Subject(models.Model):
 	Subject_code = models.CharField(max_length=25)
 	subject_name = models.CharField(max_length=100)
-	subject_type = models.CharField(max_length=50)   #compulsory or elective
+	subject_type = models.CharField(max_length=50, help_text='Compulsory')   #compulsory or elective
 	# hours_type = 
 	lecture_hours = models.DecimalField(max_digits=2 ,decimal_places=1)
 	tutorial_hours = models.DecimalField(max_digits=2,decimal_places=1)
@@ -76,7 +77,7 @@ class Subject(models.Model):
 
 
 
-	# exam_type =
+	exam_type = models.CharField(max_length=10)
 
 	def __str__(self):
 		return '%s ' % (self.subject_name)
