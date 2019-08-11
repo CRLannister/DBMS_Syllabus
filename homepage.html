@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="topbar"></div>
-<div class="container">
+<div class="container-fluid">
 
 <div class="row">
 <div class="col-md-2 " >
@@ -22,34 +22,85 @@
   <h4>Pulchowk Campus, Institute of Engineering, Tribhuvan University</h4>
   </div> 
 </div>
-<div class="part">Part
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid" id="navv">
+   <!--  <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div> -->
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Program <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Masters</a></li>
+          <li><a href="#">Bachelors</a></li>
+        </ul>
+      </li>
+      <li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Faculty<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">BCT</a></li>
+          <li><a href="#">BEX</a></li>
+          <li><a href="#">BME</a></li>
+          <li><a href="#">BCE</a></li>
+          <li><a href="#">BEL</a></li>
+        </ul>
+      </li>
+     <li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Semester<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Sem 1</a></li>
+          <li><a href="#">Sem 2</a></li>
+          <li><a href="#">Sem 3</a></li>
+          <li><a href="#">Sem 4</a></li>
+          <li><a href="#">Sem 5</a></li>
+          <li><a href="#">Sem 6</a></li>
+          <li><a href="#">Sem 7</a></li>
+          <li><a href="#">Sem 8</a></li>
+
+
+
+        </ul>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+</nav>
+
+
+
+
+<!-- <div class="part">Part
   <select id="select_part">
       <option></option>
       <option>1</option>
       <option>2</option>
 
   </select>
-</div>
-<div class="row">
-<div class="col-md-3">
-  <select id="select_degree">
+</div> -->
+<!-- <div class="row">
+<div class="col-md-3"> -->
+ <!--  <select id="select_degree">
     <option>Bachelors</option>
   
 
 
 
-</select>
-</div>
-<div class="col-md-3">
-    <select id="select_faculty" class="container">
+</select> -->
+<!-- </div>
+<div class="col-md-3"> -->
+ <!--    <select id="select_faculty" class="container">
 <option>BCT</option>
 <option>BEX</option>
 <option>BCE</option>
 <option>BME</option>
 <option>BEL</option>
 
-</select>
-</div>
+</select> -->
+<!-- </div>
 <div class="col-md-3">
     <select id="select_sem">
 <option>Semester 1</option>
@@ -65,13 +116,13 @@
 </div>
 <div class="col-md-3">
     <button id="button_process" onclick="func()">process</button>
-</div>
+</div> -->
 
 
 
 
 
-</div>
+<!-- </div> -->
 
 </div>
 
@@ -89,8 +140,8 @@
 
 
 
-     var faculty = document.getElementById("select_faculty").value;
-     var semester = document.getElementById("select_sem").value;
+    /* var faculty = document.getElementById("select_faculty").value;
+     var semester = document.getElementById("select_sem").value;*/
      var isfirst=0;
      var first=0;
      var frst=0;
