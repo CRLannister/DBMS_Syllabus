@@ -40,8 +40,8 @@
 
   </select>
 </div> -->
-<div class="row">
-<div class="col-md-3">
+<!-- <div class="row"> -->
+<!-- <div class="col-md-3">
   <select id="select_degree" class="container">
 	  <option value="0">Programs</option>
 	  <option value="1">Masters</option>
@@ -78,47 +78,220 @@
 	  <option value="8">Semester 8</option>
 
 </select>
+</div> -->
+
+
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid" id="navv">
+
+    <ul class="nav navbar-nav">
+{% block content %}
+<form class="navbar-form navbar-left" method="post" novalidate>
+<!-- <form > -->
+    {% csrf_token %}
+    <!-- <span> -->
+    {% for k,v in form.items %}
+    <!-- <div class="col-md-3"> -->
+      <li class="active" style="display: inline-table; width: 150px;"><!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#" > -->
+        <select id={{v.0}} name={{v.0}} value={{v.0}}><!-- <h2 name={{v.0}} value={{v.0}}>{{v.0}}</h2></a>
+        <ul class="dropdown-menu"> -->
+      <!-- <li class="active"><select id={{k}} class="container"> -->
+        {% for items in v %}
+        <option name="{{items}}" value="{{items}}">{{items}}</option>
+        <!-- <li><a href="#" name="{{items}}" value="{{items}}">{{items}}</a></li> -->
+        <!-- <option value={{idx}}>{{items}}</option> -->
+        {% endfor %}
+        </select>
+      <!-- </select></li> -->
+    </ul>
+  </li>
+    <!-- </div> -->
+      {% endfor %}
+   
+
+    <button type="submit" class="save btn btn-default" name= "process_btn" value="switching groups" style="width: 150px;" ><h2>process</h2></button>
+  </form>
+
+  {% endblock %}
+</ul>
 </div>
-<div class="col-md-3" class="container">
-    <button onclick="func()">process</button>
-</div>
-
-
-
-
+</nav>
 
 </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
+ <!-- <p>{{ query_list.1|length }}</p> -->
 
 <script >
 
-function func(){
+  var isfirst=0;
+  var first=0;
+  var frst=0;
+  console.log("dfbnm,");
+  document.write('<center><div>')
+  document.write('<table border=1 class="top_table">');
+  document.write('<tr>');
+  var no_of_columns = 5;
+  // if(1){
+  if('{{query_list.0}}' == 'Bachelors'){
+    no_of_columns = 8;
+  }
+  else{
+    no_of_columns = 7
+  }
 
-     var faculty = document.getElementById("select_faculty").value;
-     var semester = document.getElementById("select_sem").value;
-     console.log("dfbnm,");
+  // if(1){
+  if('{{query_list.0}}' == 'Bachelors'){
+    for(var k=0;k<no_of_columns;k++){
+      
+      //for code no i.e first column
+
+      if (isfirst==0){
+        document.write('<th width="10%" id="code"> '+"Code"+'</th>');
+        isfirst=1;  
+      }
+      
+      else{
+        // document.write('<th width="25%">');
+
+        //for second Column subject_Title
+        if(k==1){
+          document.write('<th width="25%">');
+          document.write('<p id="demo1">Title</p>');
+        }
+
+        //for third Column Exam_type
+        else if(k==2){
+          document.write('<th width="10%">');
+          document.write('<p id="demo2">Exam Type</p>');  
+        }
+
+        //for 4th column Theory_assessment_final
+        //two subgroups
+        else if(k==3){
+          document.write('<th width="10%">');
+          document.write('<p id="theory_assessment">Theory <br/> Assessment</p>');  
+          // document.write('<th width="20%">');
+          // document.write('<p id="demo3">Theory</p>');
+          // document.write('<table border=1 width="100%" id="tabb">');
+          // document.write('<tr>');
+          // document.write('<td id="assessment" width="10%">'+"Ass"+"</td>");
+          // document.write('<td id="smt" width="10%">'+"Final"+"</td>");
+          // document.write('</tr>');
+          // document.write('</table>');
+        }
+
+        else if (k==4){
+          document.write('<th width="10%">');
+          document.write('<p id="theory_final">Theory <br/> Final</p>'); 
+        }
+        
+
+        else if(k==5){
+          document.write('<th width="10%">');
+          document.write('<p id="practical_assessment">Practical <br/> Assessment</p>');  
+
+        }
+        else if (k==6){
+          document.write('<th width="10%">');
+          document.write('<p id="practical_final">Practical <br/> Final</p>'); 
+        }
+
+        //for 5th column Practical_assessment_final
+        //two subgroups      
+        // else if(k==4){
+        //   document.write('<th width="20%">');
+        //   document.write('<p id="demo4">Practical</p>');
+        //   document.write('<table border=1 width="100%" id="tabb1">');
+        //   document.write('<tr>');
+        //   document.write('<td width="10%">'+"Ass"+"</td>");
+        //   document.write('<td width="10%">'+"Final"+"</td>");
+        //   document.write('</tr>');
+        //   document.write('</table>');
+        // }
+
+        //for 6th column Final both theory_and_assessment
+
+        else if(k==7){
+          document.write('<th width="15%">');
+          document.write('<p id="demo5">Total</p>');
+        }
+
+        document.write('</th>');
+      }         
+    }
+  }
 
 
-}
+  else{
+    for(var k=0;k<no_of_columns;k++){
+      
+      //for code no i.e first column
 
+      if (isfirst==0){
+        document.write('<th width="10%" id="sn"> '+"S.N."+'</th>');
+        isfirst=1;  
+      }
+      
+      else{
+        // document.write('<th width="25%">');
 
+        //for second Column subject_Title
+        if(k==1){
+          document.write('<th width="25%">');
+          document.write('<p id="course_code">Course Code</p>');
+        }
+
+        //for third Column Exam_type
+        else if(k==2){
+          document.write('<th width="10%">');
+          document.write('<p id="course_title">Course Title</p>');  
+        }
+
+        //for 4th column Theory_assessment_final
+        //two subgroups
+        else if(k==3){
+          document.write('<th width="20%">');
+          document.write('<p id="credit">Credit</p>');  
+        }
+
+        else if(k==4){
+          document.write('<th width="20%">');
+          document.write('<p id="internal">Internal</p>');  
+        }
+        else if(k==5){
+          document.write('<th width="20%">');
+          document.write('<p id="external">External</p>');  
+        }
+        else if(k==6){
+          document.write('<th width="20%">');
+          document.write('<p id="total">Total</p>');  
+        }
+       
+      }         
+    }
+
+  }
+
+  //for values of above header rows 
+
+  document.write('</tr>');
+
+  
+   {% for subject in  query_list|slice:"1:" %}
+    document.write('<tr>');
+   
+
+      {% for field in subject  %}
+      document.write('<td>');
+      document.write('{{ field }}');
+      document.write('</td>');
+       
+    {% endfor %}
+
+    document.write('</tr>') 
+  {% endfor %}
+
+  document.write('</div></center>')
 
 </script>
-
-
-
-
-
 </body>
 </html>
