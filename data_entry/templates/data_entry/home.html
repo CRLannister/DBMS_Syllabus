@@ -24,11 +24,11 @@
 <div class="container" >
 
 <div class="row">
-<div class="col-md-4 col-xs-4 col-sm-4" >
+<div class="col-md-2 col-xs-2 col-sm-2" >
 	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="70em" alt="Tu logo"/>	
 </div>
-  <div class="col-md-8 col-xs-8 col-sm-8" id="page-header">
-	  <h2><center>Department of Electronics and Computer Engineering</center></h2>
+  <div class="col-md-10 col-xs-10 col-sm-10" id="page-header">
+	  <h2><center style="padding-top: 5px;">Department of Electronics and Computer Engineering</center></h2>
 	  <h4><center>Pulchowk Campus, Institute of Engineering, Tribhuvan University</center></h4>
   </div> 
 </div>
@@ -160,7 +160,7 @@
       //for code no i.e first column
 
       if (isfirst==0){
-        document.write('<th width="10%" id="code"> '+"Code"+'</th>');
+        document.write('<th width="10%" id="code" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;"> '+"Code"+'</th>');
         isfirst=1;  
       }
       
@@ -168,42 +168,42 @@
 
         //for second Column subject_Title
         if(k==1){
-          document.write('<th width="25%">');
-          document.write('<p id="demo1">Title</p>');
+          document.write('<th width="25%" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;">Title');
+          // document.write('<p id="demo1" style="font-weight: bold; font-size: 14px; text-align: center; vertical-align: middle;">Title</p>');
         }
 
         //for third Column Exam_type
         else if(k==2){
-          document.write('<th width="10%">');
-          document.write('<p id="demo2">Exam Type</p>');  
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;"> Exam Type');
+          // document.write('<p id="demo2" style="font-weight: bold; font-size: 14px; text-align: center;">Exam Type</p>');  
         }
 
         //for 4th column Theory_assessment_final
         else if(k==3){
-          document.write('<th width="10%">');
-          document.write('<p id="theory_assessment">Theory <br/> Assessment</p>');  
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Assessment');
+          // document.write('<p id="theory_assessment">Theory <br/> Assessment</p>');  
           
         }
 
         else if (k==4){
-          document.write('<th width="10%">');
-          document.write('<p id="theory_final">Theory <br/> Final</p>'); 
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Final');
+          // document.write('<p id="theory_final">Theory <br/> Final</p>'); 
         }
         
 
         else if(k==5){
-          document.write('<th width="10%">');
-          document.write('<p id="practical_assessment">Practical <br/> Assessment</p>');  
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Assessment');
+          // document.write('<p id="practical_assessment">Practical <br/> Assessment</p>');  
 
         }
         else if (k==6){
-          document.write('<th width="10%">');
-          document.write('<p id="practical_final">Practical <br/> Final</p>'); 
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Final');
+          // document.write('<p id="practical_final">Practical <br/> Final</p>'); 
         }
 
         else if(k==7){
-          document.write('<th width="15%">');
-          document.write('<p id="demo5">Total</p>');
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
+          // document.write('<p id="demo5">Total</p>');
         }
 
         document.write('</th>');
@@ -286,7 +286,7 @@
       {% if subject_code != 'level' %}
 
         {% for subject_field,field in subject.items %}
-        document.write('<td>');
+        document.write('<td style="font-size: 14px; text-align: center;">');
         document.write('{{ field }}');
         document.write('</td>');
         {% endfor %}
