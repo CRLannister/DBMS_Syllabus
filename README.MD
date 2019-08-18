@@ -1,20 +1,39 @@
-#python django postgresql
+# Python Django Postgresql
 
-1.) create a virtual env, for dependency issues use python 3.7.1
+## SETUP
+	- [x] Create a virtual env, for dependency issues use python 3.7.1
 
-python3 -m venv env_name
+		* `python3 -m venv dependency_env`
 
-pip install -r requirements.txt #for virtual env reqirement
+	- [x] Activate virtualenv
+		* `source dependency_env/bin/activate`
 
-2.) for running services create a user, according to settings use credentials file for user and password... also create a database in postgresql...for simplicity use data_entry as database name...
+	- [x] Virtual_env package reqirements
+		* `pip install -r requirements.txt`
 
-3.)django \
-python3 manage.py makemigrations\
-python3 manage.py migrate\
-python3 manage.py runserver
+	### For running services create a user, according to settings use credentials file for user and password... also create a database in postgresql...for simplicity use data_entry as database name...
+
+		- [x] Create system User
+			* `useradd user_name`
+
+		- [x] Create database in postgres
+
+	### Django  
+		* `python3 manage.py makemigrations`
+		* `python3 manage.py migrate`
+		* `python3 manage.py runserver`
 
 
-#maintaining frontEnd
+## TODO
 
-## html files are located inside templates...
-## 
+	### Html files are located inside templates...
+		- [ ] Maintaining frontEnd
+
+	### API
+		- [ ] API Documentation
+
+	### Masters and Bachelors dependency
+		- [ ] Entry
+		- [ ] Views
+
+
