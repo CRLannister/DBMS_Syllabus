@@ -32,6 +32,54 @@
 	  <h4><center>Pulchowk Campus, Institute of Engineering, Tribhuvan University</center></h4>
   </div> 
 </div>
+<!-- <div class="part">Part
+  <select id="select_part">
+      <option></option>
+      <option>1</option>
+      <option>2</option>
+
+  </select>
+</div> -->
+<!-- <div class="row"> -->
+<!-- <div class="col-md-3">
+  <select id="select_degree" class="container">
+	  <option value="0">Programs</option>
+	  <option value="1">Masters</option>
+	  <option value="2">Bachelors</option>
+  
+
+
+
+</select>
+</div>
+<div class="col-md-3">
+    <select id="select_faculty" class="container">
+	  <option value="0">Course of Study</option>
+	  <option value="1">BCT</option>
+	  <option value="2">BEX</option>
+	  <option value="3">BCE</option>
+	  <option value="4">BME</option>
+	  <option value="5">BEL</option>
+	  <option value="6">MSICE</option>
+	  <option value="7">MSCSKE</option>
+
+</select>
+</div>
+<div class="col-md-3">
+    <select id="select_sem" class="container">
+	  <option value="0">Semesters</option>
+	  <option value="1">Semester 1</option>
+	  <option value="2">Semester 2</option>
+	  <option value="3">Semester 3</option>
+	  <option value="4">Semester 4</option>
+	  <option value="5">Semester 5</option>
+	  <option value="6">Semester 6</option>
+	  <option value="7">Semester 7</option>
+	  <option value="8">Semester 8</option>
+
+</select>
+</div> -->
+
 
 <nav class="navbar navbar-inverse" >
   <div class="container-fluid" id="navv">
@@ -39,16 +87,25 @@
     <ul class="nav navbar-nav">
 {% block content %}
 <form class="navbar-form navbar-left" method="post" novalidate>
+<!-- <form > -->
     {% csrf_token %}
+    <!-- <span> -->
     {% for k,v in form.items %}
-      <li class="active" style="display: inline-table; width: 150px;">
-        <select id={{v.0}} name={{v.0}} value={{v.0}}>
+    <!-- <div class="col-md-3"> -->
+      <li class="active" style="display: inline-table; width: 150px;"><!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#" > -->
+        <select id={{v.0}} name={{v.0}} value={{v.0}}><!-- <h2 name={{v.0}} value={{v.0}}>{{v.0}}</h2></a>
+        <ul class="dropdown-menu"> -->
+      <!-- <li class="active"><select id={{k}} class="container"> -->
         {% for items in v %}
         <option name="{{items}}" value="{{items}}">{{items}}</option>
+        <!-- <li><a href="#" name="{{items}}" value="{{items}}">{{items}}</a></li> -->
+        <!-- <option value={{idx}}>{{items}}</option> -->
         {% endfor %}
         </select>
+      <!-- </select></li> -->
     </ul>
   </li>
+    <!-- </div> -->
       {% endfor %}
    
 
@@ -62,6 +119,7 @@
 
 </div>
 
+
 <script >
 
   var isfirst=0;
@@ -72,14 +130,16 @@
   document.write('<table border=1 class="top_table">');
   document.write('<tr>');
   var no_of_columns = 5;
-  if('{{query_list.0}}' == 'Bachelors'){
+  if(1){
+  // if({{query_list.0}} == 'Bachelors'){
     no_of_columns = 8;
   }
   else{
     no_of_columns = 7
   }
 
-  if('{{query_list.0}}' == 'Bachelors'){
+  if(1){
+  // if({{query_list.0}} == 'Bachelors'){
     for(var k=0;k<no_of_columns;k++){
       
       //for code no i.e first column
@@ -90,6 +150,7 @@
       }
       
       else{
+        // document.write('<th width="25%">');
 
         //for second Column subject_Title
         if(k==1){
@@ -104,10 +165,18 @@
         }
 
         //for 4th column Theory_assessment_final
+        //two subgroups
         else if(k==3){
           document.write('<th width="10%">');
           document.write('<p id="theory_assessment">Theory <br/> Assessment</p>');  
-          
+          // document.write('<th width="20%">');
+          // document.write('<p id="demo3">Theory</p>');
+          // document.write('<table border=1 width="100%" id="tabb">');
+          // document.write('<tr>');
+          // document.write('<td id="assessment" width="10%">'+"Ass"+"</td>");
+          // document.write('<td id="smt" width="10%">'+"Final"+"</td>");
+          // document.write('</tr>');
+          // document.write('</table>');
         }
 
         else if (k==4){
@@ -125,6 +194,21 @@
           document.write('<th width="10%">');
           document.write('<p id="practical_final">Practical <br/> Final</p>'); 
         }
+
+        //for 5th column Practical_assessment_final
+        //two subgroups      
+        // else if(k==4){
+        //   document.write('<th width="20%">');
+        //   document.write('<p id="demo4">Practical</p>');
+        //   document.write('<table border=1 width="100%" id="tabb1">');
+        //   document.write('<tr>');
+        //   document.write('<td width="10%">'+"Ass"+"</td>");
+        //   document.write('<td width="10%">'+"Final"+"</td>");
+        //   document.write('</tr>');
+        //   document.write('</table>');
+        // }
+
+        //for 6th column Final both theory_and_assessment
 
         else if(k==7){
           document.write('<th width="15%">');
@@ -148,6 +232,7 @@
       }
       
       else{
+        // document.write('<th width="25%">');
 
         //for second Column subject_Title
         if(k==1){
@@ -162,6 +247,7 @@
         }
 
         //for 4th column Theory_assessment_final
+        //two subgroups
         else if(k==3){
           document.write('<th width="20%">');
           document.write('<p id="credit">Credit</p>');  
@@ -184,28 +270,100 @@
     }
 
   }
-
-  //for values of above header rows 
+  
 
   document.write('</tr>');
-
-  
-   {% for subject in  query_list|slice:"1:" %}
+  for(var i=0;i<=5;i++){
     document.write('<tr>');
-   
-
-      {% for field in subject  %}
+    for(var j=0;j<=5;j++){
       document.write('<td>');
-      document.write('{{ field }}');
+      if(j==3 || j==4){
+        document.write('<table border=1 width="100%" id="tabb2">');
+        document.write('<tr>');
+        document.write('<td>'+"Ashish"+"</td>");
+        document.write('<td>'+"Agarwal"+'</td>');
+        document.write('</tr>');
+        document.write('</table>');
+      }
       document.write('</td>');
-       
-    {% endfor %}
-
-    document.write('</tr>') 
-  {% endfor %}
-
+    }
+    document.write('</tr>');
+  }
   document.write('</div></center>')
 
+
 </script>
+
+
+
+
+
 </body>
 </html>
+
+
+
+
+
+ // query_array = {{query_list}}
+
+  // for(var i=1;i<={{ query_list.1|length }} ;i++){
+    // console.log('{{query_list|slice:"1:"}}')
+    // <p>{{ query_list.1 }}</p>
+  // {% for i in  query_list.1  %}
+  //   document.write('<tr>');
+  //   // for(var j=0;j<no_of_columns;j++){s
+  //     // console.log('{{ i }}');
+
+  //     {% for a,b,c,d in query_list|slice:"1:"  %}
+           
+  //     document.write('<td>');
+  //     {% if forloop.parentloop.counter == 1 %}
+  //     document.write('{{ a }}');
+  //     {% elif forloop.parentloop.counter == 2 %}
+  //     document.write('{{ b }}');
+  //     {% elif forloop.parentloop.counter == 3 %}
+  //     document.write('{{ c }}');
+  //     {% elif forloop.parentloop.counter == 4 %}
+  //     document.write('{{ d }}');
+  //     {% endif %}
+  //     document.write('</td>');
+
+  //     {% endfor %}
+
+
+
+ // document.write('<td>');
+      // {% if forloop.parentloop.counter == 1 %}
+      // document.write('{{ a }}');
+      // {% elif forloop.parentloop.counter == 2 %}
+      // document.write('{{ b }}');
+      // {% elif forloop.parentloop.counter == 3 %}
+      // document.write('{{ c }}');
+      // {% elif forloop.parentloop.counter == 4 %}
+      // document.write('{{ d }}');
+      // {% endif %}
+      // document.write('</td>');
+
+
+
+
+
+
+
+
+
+// {% for a in query_list|slice:"1:"  %}
+      //       document.write('<td>');
+      //       console.log('{{ a.next }}')
+      //       document.write('{{ a.first }}');
+      //       document.write('</td>');
+
+
+
+      // {% endfor %} 
+      // document.write('</td>');
+
+
+       // for(var j=0;j<no_of_columns;j++){s
+      // console.log('{{ i }}');

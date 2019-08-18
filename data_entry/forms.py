@@ -62,21 +62,8 @@ year_list.insert(0,'Year')
 
 part_tuple = tuple(part_list)
 year_tuple = tuple(year_list)
-# le_list = ['level']
-# for x in le:
-# 	le_list.append(x.level_name)
-
 
 class process_btn_form(forms.Form):
-		# class Meta:
-	# 	deg_cho = models.CharField(max_length =50, choices=SELECT_DEGREE, default='Bachelors')
-	# 	fields = ['deg_cho']
-
-    # widget=forms.Select(choices=SELECT_DEGREE)
-    # degree_choices = forms.ChoiceField(choices = SELECT_DEGREE) 
-    # faculty_choices = forms.ChoiceField(choices = SELECT_FACULTY) 
-    # semester_choices = forms.ChoiceField(choices = SELECT_SEMESTER)
-
     degree_choices = le_tuple
     faculty_choices =pro_tuple
     part_choices = part_tuple
@@ -84,6 +71,3 @@ class process_btn_form(forms.Form):
     semester_choices = SELECT_SEMESTER
 
 
-
-    # filter_by = forms.ChoiceField(choices = (SELECT_DEGREE,SELECT_FACULTY,SELECT_SEMESTER))
-    # filter_by = forms.ChoiceField(choices = (SELECT_DEGREE))
