@@ -7,6 +7,7 @@ class Department(models.Model):
 	dept_id = models.AutoField(primary_key=True)
 	dept_name = models.CharField(max_length=200)
 
+
 	def __str__(self):
 		return '%s' % (self.dept_name)
 
@@ -16,6 +17,7 @@ class Level(models.Model):
 		verbose_name_plural ='Level'
 	level_id = models.AutoField(primary_key=True)
 	level_name = models.CharField(max_length=50)
+	# department = models.ForeignKey('Department', on_delete = models.CASCADE)
 
 	def __str__(self):
 		return '%s' % (self.level_name)
@@ -24,6 +26,7 @@ class Level(models.Model):
 class Program(models.Model):
 	program_id = models.AutoField(primary_key=True)
 	program_name = models.CharField(max_length=200)
+	program_short_name = models.CharField(max_length=30,null=True)
 	dept_id = models.ForeignKey('Department', on_delete=models.CASCADE)
 	level = models.ForeignKey('Level', on_delete =models.CASCADE)
 
@@ -47,6 +50,7 @@ class Subject(models.Model):
 	theory_duration_hours = models.DecimalField(max_digits=2,decimal_places=1, null=True, blank=True)
 	practical_duration_hours = models.DecimalField(max_digits=2,decimal_places=1, null=True, blank=True)
 	exam_type = models.CharField(choices=choices.EXAM_TYPE_CHOICES,max_length=20, default='Theory')
+
 	# practical_final_pass = models.IntegerField()
 	# theory_final_pass = models.IntegerField()
 	# theory_assessment_pass = models.IntegerField()
@@ -67,7 +71,13 @@ class Syllabus(models.Model):
 	year = models.IntegerField()
 	part = models.IntegerField()
 	Subject = models.ManyToManyField(Subject)
+
+	# def calculateTotal(self):
+	# 	return Subject.objects.filter(choice = self).count()
+
+	# total_final_marks = property(calculateTotal)
 	total_final_marks = models.IntegerField()
+
 
 	def __str__(self):
 		return '%s ' % (str(self.syllabus_name))
