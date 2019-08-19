@@ -17,7 +17,6 @@ class Level(models.Model):
 		verbose_name_plural ='Level'
 	level_id = models.AutoField(primary_key=True)
 	level_name = models.CharField(max_length=50)
-	# department = models.ForeignKey('Department', on_delete = models.CASCADE)
 
 	def __str__(self):
 		return '%s' % (self.level_name)
