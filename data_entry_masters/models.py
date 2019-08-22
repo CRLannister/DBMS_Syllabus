@@ -57,6 +57,7 @@ class Syllabus(models.Model):
 	Subject = models.ManyToManyField(Subject)
 
 	total_final_marks = models.IntegerField()
+	total_credits = models.IntegerField()
 
 	def __str__(self):
 		return '%s ' % (str(self.syllabus_name))

@@ -25,11 +25,11 @@
 
 <div class="row">
 <div class="col-md-2 col-xs-2 col-sm-2" >
-	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="70em" alt="Tu logo"/>	
+	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="50em" alt="Tu logo"/>	
 </div>
   <div class="col-md-10 col-xs-10 col-sm-10" id="page-header">
-	  <h2><center style="padding-top: 5px;">Department of Electronics and Computer Engineering</center></h2>
-	  <h4><center>Pulchowk Campus, Institute of Engineering, Tribhuvan University</center></h4>
+	  <h2 style="vertical-align: middle;"><center style="padding-top: 5%;">Department of Electronics and Computer Engineering</center></h2>
+	  <h4 style="vertical-align: middle;"><center>Pulchowk Campus, Institute of Engineering, Tribhuvan University</center></h4>
   </div> 
 </div>
 
@@ -44,12 +44,14 @@
       <!-- <div class="active" style="display: inline-table;"> -->
         <center>
         <!-- <select id={{v.0}} name={{v.0}} value={{v.0}} type="submit" style="font-size: 15px; font-weight: bold; margin: 5%;"> -->
-        <select id={{v.header}} name={{v.header}} value={{v.header}} type="submit" style="font-size: 15px; font-weight: bold; margin: 5%;">
+          <!-- <form method="post" novalidate > -->
+        <select id={{v.header}} name={{v.header}} value={{v.header}} style="font-size: 15px; font-weight: bold; margin: 5%;" type="submit" method ="get">
 
         {% for items_key, items in v.items %}
-        <option name="{{items}}" value="{{items}}" style="font-size: 14px;">{{items}}</option>
+        <option name="{{items}}" value="{{items}}" style="font-size: 14px;" ><button type="submit" class="save btn btn-default" name="{{items}}" value="{{items}}" method="post" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">{{items}}</button></option>
         {% endfor %}
         </select>
+      <!-- </form> -->
       </center>
       </div>
     <!-- </div> -->
@@ -61,6 +63,9 @@
   </center>
   </div>
   </form>
+  <form method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
 
   {% endblock %}
 </div>
@@ -68,6 +73,16 @@
 </nav>
 
 </div>
+
+<h1>Search Results</h1>
+
+<ul>
+  {% for city in object_list %}
+    <li>
+      {{ city.name }}, {{ city.state }}
+    </li>
+  {% endfor %}
+</ul>
 
 <script >
 
@@ -87,73 +102,6 @@
     no_of_columns = 7;
   {% endif %}
   
-  
-  // if({{query_list.level}} == 'Bachelors'){
-  //   {{query_list.level}}
-  //   no_of_columns = 8;
-    
-  // }
-  // else{
-  //   no_of_columns = 7
-  // }
-
-  // if('{{query_list.0}}' == 'Bachelors'){
-  //   for(var k=0;k<no_of_columns;k++){
-      
-  //     //for code no i.e first column
-
-  //     if (isfirst==0){
-  //       document.write('<th width="10%" id="code"> '+"Code"+'</th>');
-  //       isfirst=1;  
-  //     }
-      
-  //     else{
-
-  //       //for second Column subject_Title
-  //       if(k==1){
-  //         document.write('<th width="25%">');
-  //         document.write('<p id="demo1">Title</p>');
-  //       }
-
-  //       //for third Column Exam_type
-  //       else if(k==2){
-  //         document.write('<th width="10%">');
-  //         document.write('<p id="demo2">Exam Type</p>');  
-  //       }
-
-  //       //for 4th column Theory_assessment_final
-  //       else if(k==3){
-  //         document.write('<th width="10%">');
-  //         document.write('<p id="theory_assessment">Theory <br/> Assessment</p>');  
-          
-  //       }
-
-  //       else if (k==4){
-  //         document.write('<th width="10%">');
-  //         document.write('<p id="theory_final">Theory <br/> Final</p>'); 
-  //       }
-        
-
-  //       else if(k==5){
-  //         document.write('<th width="10%">');
-  //         document.write('<p id="practical_assessment">Practical <br/> Assessment</p>');  
-
-  //       }
-  //       else if (k==6){
-  //         document.write('<th width="10%">');
-  //         document.write('<p id="practical_final">Practical <br/> Final</p>'); 
-  //       }
-
-  //       else if(k==7){
-  //         document.write('<th width="15%">');
-  //         document.write('<p id="demo5">Total</p>');
-  //       }
-
-  //       document.write('</th>');
-  //     }         
-  //   }
-  // }
-
   if('{{query_list.level}}' == 'Bachelors'){
     for(var k=0;k<no_of_columns;k++){
       
@@ -214,12 +162,13 @@
 
 
   else{
+    isfirst =0 ;
     for(var k=0;k<no_of_columns;k++){
       
       //for code no i.e first column
 
       if (isfirst==0){
-        document.write('<th width="10%" id="sn"> '+"S.N."+'</th>');
+        document.write('<th width="10%" id="sn" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;" > '+"S.N."+'</th>');
         isfirst=1;  
       }
       
@@ -227,34 +176,35 @@
 
         //for second Column subject_Title
         if(k==1){
-          document.write('<th width="25%">');
-          document.write('<p id="course_code">Course Code</p>');
+          document.write('<th width="25%" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Code');
+          // document.write('<p id="course_code">Course Code</p>');
         }
 
         //for third Column Exam_type
         else if(k==2){
-          document.write('<th width="10%">');
-          document.write('<p id="course_title">Course Title</p>');  
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Title');
+          // document.write('<p id="course_title">Course Title</p>');  
         }
 
         //for 4th column Theory_assessment_final
         else if(k==3){
-          document.write('<th width="20%">');
-          document.write('<p id="credit">Credit</p>');  
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Credit');
+          // document.write('<p id="credit">Credit</p>');  
         }
 
         else if(k==4){
-          document.write('<th width="20%">');
-          document.write('<p id="internal">Internal</p>');  
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Internal');
+          // document.write('<p id="internal">Internal</p>');  
         }
         else if(k==5){
-          document.write('<th width="20%">');
-          document.write('<p id="external">External</p>');  
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">External');
+          // document.write('<p id="external">External</p>');  
         }
         else if(k==6){
-          document.write('<th width="20%">');
-          document.write('<p id="total">Total</p>');  
+          document.write('<th width="20%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
+          // document.write('<p id="total">Total</p>');  
         }
+        document.write('</th>');
        
       }         
     }
