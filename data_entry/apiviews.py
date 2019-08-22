@@ -12,6 +12,7 @@ from .serializers import ProgramSerializer, SyllabusSerializer
 
 # SearchFunc()
 
+#------------------ use this function for searching subjects ---------------
 def SearchFunc(searchQuery):
     # searchQuery = 'math'    
     subs = Subject.objects.filter(subject_name__icontains = searchQuery)
