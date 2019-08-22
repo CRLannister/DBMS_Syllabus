@@ -25,21 +25,23 @@ def syllabus_dict_list(syllabus_list):
 		subject_dict['program_full_name'] = final_syllabus.program.program_name
 		subject_dict['year'] = final_syllabus.year
 		subject_dict['part'] = final_syllabus.part
+		elective_1 = {}
+		elective_2 = {}
+		elective_3 = {}
 		for subject_var in final_syllabus.Subject.all():
 			subject_key = subject_var.Subject_code;
 			itr_dict = {}
 			itr_dict['Subject_code'] = subject_var.Subject_code
 			subject_type = subject_var.subject_type
 			subject_name = subject_var.subject_name
-			if subject_type == 'Elective':
-				subject_name += ' (Elective)'
+			# if subject_type == 'Elective I':
 
 			itr_dict['subject_name'] = subject_name
 			itr_dict['exam_type'] = subject_var.exam_type
 			theory_assessment = subject_var.theory_assessment_total
 			theory_final = subject_var.theory_final_total
-			practical_assessment = subject_var.theory_assessment_total
-			practical_final = subject_var.theory_assessment_total
+			practical_assessment = subject_var.practical_assessment_total
+			practical_final = subject_var.practical_final_total
 			final_total = subject_var.marks_final_total
 			if theory_assessment != None:
 				itr_dict['theory_assessment_total'] = theory_assessment
@@ -63,15 +65,27 @@ def syllabus_dict_list(syllabus_list):
 
 			if  final_total != None:
 				itr_dict['final_total'] = final_total
-				syllabus_total += final_total
+				if subject_type == 'Compulsory':
+					syllabus_total += final_total
 			else:
 				itr_dict['final_total'] = '-'
 
 			# itr_dict['theory_final_total'] = subject_var.theory_final_total
 			# itr_dict['practical_assessment_total'] = subject_var.practical_assessment_total
 			# itr_dict['practical_final_total'] = subject_var.practical_final_total
-			subject_dict[subject_key] = itr_dict
+			if subject_type == 'Compulsory':
+				subject_dict[subject_key] = itr_dict
+			elif subject_type == 'Elective I':
+				elective_1[subject_key] = itr_dict
+			elif subject_type == 'Elective II':
+				elective_2[subject_key] = itr_dict
+			elif subject_type == 'Elective III':
+				elective_3[subject_key] = itr_dict
+				
 			subject_dict['total_syllabus'] = syllabus_total
+			subject_dict['elective_1'] = elective_1
+			subject_dict['elective_2'] = elective_2
+			subject_dict['elective_3'] = elective_3
 
 		syllabus_dict[final_syllabus.syllabus_name] = subject_dict
 		# print(subject_dict)
@@ -107,7 +121,7 @@ def dropdown_search(request):
 	# print("iterable",final_syllabus)
 	# print(type(final_syllabus))
 	syllabus_dict_list1 = syllabus_dict_list(final_syllabus)
-	print(syllabus_dict_list1)
+	# print(syllabus_dict_list1)
 	return syllabus_dict_list1
 	
 
