@@ -42,7 +42,7 @@ def syllabus_dict_list(syllabus_list):
 			subject_dict[subject_key] = itr_dict
 
 		syllabus_dict[final_syllabus.syllabus_name] = subject_dict
-		print(subject_dict)
+		# print(subject_dict)
 
 	return syllabus_dict #{{level:bachelors,syllabus_name:{subjects}}}
 
@@ -53,24 +53,32 @@ def dropdown_search(request):
 	year = request.POST.get('Year',default=1)
 	part = request.POST.get('Part',default=1)
 
-	query_program_id = models.Program.objects.all().filter(program_short_name=program)[0].program_id
-	if query_program_id != None:
-		query_syllabus_set = models.Syllabus.objects.all().filter(program_id = query_program_id)
-		final_syllabus = query_syllabus_set
-		if type(year) == int:
-			final_syllabus = query_syllabus_set.filter(year = year)
-		if type(part) == int:
-			final_syllabus = query_syllabus_set.filter(part = part)
+	if program != 'Program':
+		query_program_id = models.Program.objects.all().filter(program_short_name=program)[0].program_id
+		if query_program_id != None:
+			query_syllabus_set = models.Syllabus.objects.all().filter(program_id = query_program_id)
+			final_syllabus = query_syllabus_set
+			if year != 'Year':
+				final_syllabus = query_syllabus_set.filter(year = year)
+			if part != 'Part':
+				final_syllabus = query_syllabus_set.filter(part = part)
+
+	else:
+		final_syllabus = models.Syllabus.objects.all()
+		if year != 'Year':
+			final_syllabus = final_syllabus.filter(year = year)
+		if part != 'Part':
+			final_syllabus = final_syllabus.filter(part = part)
+
 		
-	# final_syllabus = query_syllabus_set.filter(year = year, part= part)
-	# final_syllabus = models.Syllabus.objects.all().filter(syllabus_name = final_syllabus)
-	print("iterable",final_syllabus)
-	syllabus_dict_list1 = syllabus_dict_list(final_syllabus)
-	return syllabus_dict_list1
+	# print("iterable",final_syllabus)
+	# print(type(final_syllabus))
+		syllabus_dict_list1 = syllabus_dict_list(final_syllabus)
+		return syllabus_dict_list1
 	
 
 def SearchFunc(request, searchQuery):  #bhandari function
-    res = [] 
+    search_list = [] 
     subs = models.Subject.objects.filter(subject_name__icontains = searchQuery)
     if subs != None:
         subs = list(subs)
@@ -82,17 +90,29 @@ def SearchFunc(request, searchQuery):  #bhandari function
         	for syl in syllabuses:
         		if sub in syl.Subject.all():
         			sub_syllabuses[1].append(syl)
-        	res.append(sub_syllabuses)
-    return res  # returns list of tuple of two elements....first element of tuble being subject and other being a list of syllabuses
+        	search_list.append(sub_syllabuses)
+
+        if len(search_list) != 0:
+        	syllabus_list = []
+        	for subject in search_list:
+        		if len(subject[1]) != 0:
+        			print(subject)
+        			for element in subject[1]:
+        				syllabus_list.append(element)
+
+        	syllabus_dict_list_2 = syllabus_dict_list(syllabus_list)
+        	return syllabus_dict_list_2  ##updated....doesn't do so# returns list of tuple of two elements....first element of tuble being subject and other being a list of syllabuses
 
 def home(request):
 	print("home_entry ",request)
 	if request.method == "GET":
-		print("get ",request)
 		searchQuery = request.GET.get('q')
 		if searchQuery != None:
-			search_list = SearchFunc(request, searchQuery)
-			print(search_list)
+			syllabus_dict_list_2 = SearchFunc(request, searchQuery)
+			return render(request,'data_entry/home.html',{'form': select_dict,'query_list_syllabus': syllabus_dict_list_2})
+
+
+
 
 		# return render(request,'data_entry/home.html',{'form': select_dict,'query_list_syllabus': syllabus_dict_list})
 
@@ -101,8 +121,8 @@ def home(request):
 	if request.method == "POST":
 		print("post ",request)
 		print(request.POST)
-		syllabus_dict_list = dropdown_search(request)
-		return render(request,'data_entry/home.html',{'form': select_dict,'query_list_syllabus': syllabus_dict_list})
+		syllabus_dict_list1 = dropdown_search(request)
+		return render(request,'data_entry/home.html',{'form': select_dict,'query_list_syllabus': syllabus_dict_list1})
 
 	
 	return render(request,'data_entry/home.html',{'form': select_dict, 'query_list_syllabus':{'level' : 'start' }})

@@ -1,6 +1,9 @@
 SUBJECT_TYPE_CHOICES = (
     ("Compulsory","Compulsory"),
-    ("Elective","Elective")
+    ("Elective I","Elective I"),
+    ("Elective II","Elective II"),
+    ("Elective III","Elective III"),
+    ("Optional","Optional")
 )
 EXAM_TYPE_CHOICES = (
     ('T',"THEORY"),
