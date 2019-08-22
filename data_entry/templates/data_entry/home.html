@@ -21,11 +21,11 @@
 </head>
 <body>
     <div class="topbar"></div>
-<div class="container" >
+<div class="container-fluid" >
 
 <div class="row">
 <div class="col-md-2 col-xs-2 col-sm-2" >
-	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="50em" alt="Tu logo"/>	
+	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="5em" alt="Tu logo"/>	
 </div>
   <div class="col-md-10 col-xs-10 col-sm-10" id="page-header">
 	  <h2 style="vertical-align: middle;"><center style="padding-top: 5%;">Department of Electronics and Computer Engineering</center></h2>
@@ -35,6 +35,7 @@
 
 <nav class="navbar navbar-inverse" >
   <div class="container-fluid nav navbar-nav" id="navv" >
+
     <!-- <div class="nav navbar-nav"> -->
 {% block content %}
 <form class="navbar-form" method="post" novalidate style="width:100%; height: 100%">
@@ -64,6 +65,7 @@
   </center>
   </div>
   </form>
+  
   <form method="get">
   <input name="q" type="text" placeholder="Search...">
 </form>
@@ -88,6 +90,7 @@
   document.write('<h4 ">Program : {{syllabus.program_full_name}}, Year: {{syllabus.year}},  Part: {{syllabus.part}}</h4>')
 
   document.write('<table border=1 class="top_table">');
+  document.write('<thead>')
 
   document.write('<tr>');
   var no_of_columns = 5;
@@ -197,6 +200,8 @@
   //for values of above header rows 
 
   document.write('</tr>');
+  document.write('</thead>');
+  document.write('<tbody>');
 
   {% for subject_code,subject in  syllabus.items %}
     document.write('<tr>');
@@ -211,7 +216,22 @@
       {% endif %}
 
     document.write('</tr>') 
+    // {% if subject_code == 'total_syllabus' %}
+    // var total_syllabus = {{subject}}
+
+    // {% endif %}
+
   {% endfor %}
+  document.write('</tbody>');
+  document.write('<tfoot>');
+  {% if syllabus.level == 'Bachelors' %}
+    document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;">Total Marks</th><td style="font-size: 14px; text-align: center;">{{ syllabus.total_syllabus }}</td></tr>')
+  {% endif %}
+  {% if syllabus.level == 'Masters' %}
+    document.write('<tr><th id="total" colspan="6" style="font-size: 14px; text-align: center;">Total Marks</th><td style="font-size: 14px; text-align: center;">{{ syllabus.total_syllabus }}</td></tr>')
+  {% endif %}
+  
+  document.write('</tfoot>');
 
   document.write('</table>')
   document.write('</div></center>')

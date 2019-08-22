@@ -20,6 +20,7 @@ def syllabus_dict_list(syllabus_list):
 	syllabus_dict = {}
 	print("error",syllabus_list)
 	for final_syllabus in syllabus_list:
+		syllabus_total = 0
 		subject_dict = {'level' : final_syllabus.program.level.level_name}
 		subject_dict['program_full_name'] = final_syllabus.program.program_name
 		subject_dict['year'] = final_syllabus.year
@@ -35,11 +36,42 @@ def syllabus_dict_list(syllabus_list):
 
 			itr_dict['subject_name'] = subject_name
 			itr_dict['exam_type'] = subject_var.exam_type
-			itr_dict['theory_assessment_total'] = subject_var.theory_assessment_total
-			itr_dict['theory_final_total'] = subject_var.theory_final_total
-			itr_dict['practical_assessment_total'] = subject_var.practical_assessment_total
-			itr_dict['practical_final_total'] = subject_var.practical_final_total
+			theory_assessment = subject_var.theory_assessment_total
+			theory_final = subject_var.theory_final_total
+			practical_assessment = subject_var.theory_assessment_total
+			practical_final = subject_var.theory_assessment_total
+			final_total = subject_var.marks_final_total
+			if theory_assessment != None:
+				itr_dict['theory_assessment_total'] = theory_assessment
+			else:
+				itr_dict['theory_assessment_total'] = '-'
+
+			if theory_final != None:
+				itr_dict['theory_final_total'] = theory_final
+			else:
+				itr_dict['theory_final_total'] = '-'
+
+			if practical_assessment != None:
+				itr_dict['practical_assessment_total'] = practical_assessment
+			else:
+				itr_dict['practical_assessment_total'] = '-'
+
+			if practical_final != None:
+				itr_dict['practical_final_total'] = practical_final
+			else:
+				itr_dict['practical_final_total'] = '-'
+
+			if  final_total != None:
+				itr_dict['final_total'] = final_total
+				syllabus_total += final_total
+			else:
+				itr_dict['final_total'] = '-'
+
+			# itr_dict['theory_final_total'] = subject_var.theory_final_total
+			# itr_dict['practical_assessment_total'] = subject_var.practical_assessment_total
+			# itr_dict['practical_final_total'] = subject_var.practical_final_total
 			subject_dict[subject_key] = itr_dict
+			subject_dict['total_syllabus'] = syllabus_total
 
 		syllabus_dict[final_syllabus.syllabus_name] = subject_dict
 		# print(subject_dict)
@@ -52,7 +84,7 @@ def dropdown_search(request):
 	program = request.POST.get('Program',default=None)
 	year = request.POST.get('Year',default=1)
 	part = request.POST.get('Part',default=1)
-
+	final_syllabus = ''
 	if program != 'Program':
 		query_program_id = models.Program.objects.all().filter(program_short_name=program)[0].program_id
 		if query_program_id != None:
@@ -62,6 +94,7 @@ def dropdown_search(request):
 				final_syllabus = query_syllabus_set.filter(year = year)
 			if part != 'Part':
 				final_syllabus = query_syllabus_set.filter(part = part)
+
 
 	else:
 		final_syllabus = models.Syllabus.objects.all()
@@ -73,8 +106,9 @@ def dropdown_search(request):
 		
 	# print("iterable",final_syllabus)
 	# print(type(final_syllabus))
-		syllabus_dict_list1 = syllabus_dict_list(final_syllabus)
-		return syllabus_dict_list1
+	syllabus_dict_list1 = syllabus_dict_list(final_syllabus)
+	print(syllabus_dict_list1)
+	return syllabus_dict_list1
 	
 
 def SearchFunc(request, searchQuery):  #bhandari function
@@ -122,6 +156,7 @@ def home(request):
 		print("post ",request)
 		print(request.POST)
 		syllabus_dict_list1 = dropdown_search(request)
+		# print('lololo',syllabus_dict_list1)
 		return render(request,'data_entry/home.html',{'form': select_dict,'query_list_syllabus': syllabus_dict_list1})
 
 	
