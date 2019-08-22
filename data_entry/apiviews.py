@@ -60,3 +60,62 @@ def SubjectList(request, program, year, part):
         'subjects': [x.subject_name for x in list(syllabus.Subject.all())]
     }
     return JsonResponse(res)
+
+# Functions for dropdown 
+
+def get_syllabus_program_year_part(program,year,part):
+    program_short_name = program.upper()
+    id = Program.objects.get(program_short_name = program_short_name).program_id
+    syllabus_1 = Syllabus.objects.get(year = year ,part = part, program_id=id)
+   
+    return syllabus_1
+
+
+
+def get_syllabus_program_year(program,year):
+    program_short_name = program.upper()
+    id = Program.objects.get(program_short_name = program_short_name).program_id
+    syllabus_1 = Syllabus.objects.get(year = year ,part = 1, program_id=id)
+    syllabus_2 = Syllabus.objects.get(year = year ,part = 2, program_id=id)
+   
+    return [syllabus_1, syllabus_2]
+
+
+def get_syllabus_year(year):
+    program_short_name = 'BCT'
+    id = Program.objects.get(program_short_name = program_short_name).program_id
+    syllabus_1 = Syllabus.objects.get(year = year ,part = 1, program_id=id)
+    syllabus_2 = Syllabus.objects.get(year = year ,part = 2, program_id=id)
+    bct_year_syllabus = [syllabus_1, syllabus_2]
+    program_short_name = 'BEX'
+    id = Program.objects.get(program_short_name = program_short_name).program_id
+    syllabus_1 = Syllabus.objects.get(year = year ,part = 1, program_id=id)
+    syllabus_2 = Syllabus.objects.get(year = year ,part = 2, program_id=id)
+    bex_year_syllabus = [syllabus_1, syllabus_2]
+    
+    return [bct_year_syllabus, bex_year_syllabus]
+
+def get_syllabus_program(program):
+    #uncomment these lines when data of all 4 years are available
+    # and comment the lines after -----------
+
+    # res = []                          
+    # for i in range(4):
+    #     res.append(get_syllabus_program_year(program, i+1))
+    # return res
+
+
+    #--------------
+    program_short_name = program.upper()
+    id = Program.objects.get(program_short_name = program_short_name).program_id
+    syllabus_program = Syllabus.objects.get(program_id = id)
+
+    return [syllabus_program]
+
+
+def get_syllabus_bachelors():
+    res = []
+    res.append(get_syllabus_program('BCT'))
+    res.append(get_syllabus_program('BEX'))
+
+    return res
