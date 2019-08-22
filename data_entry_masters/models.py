@@ -51,7 +51,7 @@ class Syllabus(models.Model):
 		verbose_name_plural = 'Syllabus'
 	syllabus_id = models.AutoField(primary_key=True)
 	program = models.ForeignKey(Program, on_delete=models.CASCADE)
-	syllabus_name = models.CharField(max_length=50,  help_text='BCT_I_I_Part')
+	# syllabus_name = models.CharField(max_length=50,  help_text='BCT_I_I_Part')
 	year = models.IntegerField()
 	part = models.IntegerField()
 	Subject = models.ManyToManyField(Subject)
@@ -59,8 +59,14 @@ class Syllabus(models.Model):
 	total_final_marks = models.IntegerField()
 	total_credits = models.IntegerField()
 
+	# @property	
+	# def syllabus_name(self):
+	# 	return str(self.program.program_short_name) + '_' + str(self.year) + '_' + str(self.part) 
+
+
 	def __str__(self):
-		return '%s ' % (str(self.syllabus_name))
+		return '%s ' % 	(str(self.program.program_short_name) + '_' + str(self.year) + '_' + str(self.part))
+		# return '%s ' % (str(self.syllabus_name))
 
 
 

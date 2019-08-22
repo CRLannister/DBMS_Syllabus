@@ -66,23 +66,16 @@ class Syllabus(models.Model):
 		verbose_name_plural = 'Syllabus'
 	syllabus_id = models.AutoField(primary_key=True)
 	program = models.ForeignKey(Program, on_delete=models.CASCADE)
-	syllabus_name = models.CharField(max_length=50,  help_text='BCT_I_I_Part')
 	year = models.IntegerField()
 	part = models.IntegerField()
 	Subject = models.ManyToManyField(Subject)
 
-	# def calculateTotal(self):
-	# 	return Subject.objects.filter(choice = self).count()
-
-	# total_final_marks = property(calculateTotal)
 	total_final_marks = models.IntegerField()
+
+	@property	
+	def syllabus_name(self):
+		return str(self.program.program_short_name) + '_Year_' + str(self.year) + '_Part_' + str(self.part) 
 
 
 	def __str__(self):
-		return '%s ' % (str(self.syllabus_name))
-
-
-
-
-
-
+		return '%s ' % 	(str(self.program.program_short_name) + '_Year_' + str(self.year) + '_Part_' + str(self.part))
