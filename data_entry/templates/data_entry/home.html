@@ -8,92 +8,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <link media="all" rel="stylesheet" href="{% static 'dataEntry/vendor/bootstrap/css/bootstrap.min.css' %}" />
-                <link media="all" rel="shortcut icon" href="{% static 'dataEntry/images/favicon.ico' %}">
-                <link media="all" rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/normalize.css' %}" />
-                <link media="all" rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/demo.css' %}" />
-                <link media="all" rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/component.css' %}" />
-                <script src="{% static 'dataEntry/js/modernizr.custom.js' %}"></script>
-                <script src="{% static 'dataEntry/vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
-                <script src="{% static 'dataEntry/vendor/ajax/libs/popper/1.14.6/umd/popper.min.js' %}"></script>
-                <script src="{% static 'dataEntry/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<link media="all" rel="shortcut icon" href="{% static 'dataEntry/images/favicon.ico' %}">
+<link media="all" rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/normalize.css' %}" />
+<link media="all" rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/demo.css' %}" />
+<link media="all" rel="stylesheet" type="text/css" href="{% static 'dataEntry/css/component.css' %}" />
+<script src="{% static 'dataEntry/js/modernizr.custom.js' %}"></script>
+<script src="{% static 'dataEntry/vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'dataEntry/vendor/ajax/libs/popper/1.14.6/umd/popper.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<script src="{% static 'dataEntry/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
   <link rel="stylesheet" href="static/dataEntry/css/styles.css" media="all">
 </head>
-<body>
+<body style="font-size: 14px;">
     <div class="topbar"></div>
 <div class="container-fluid" >
 
 <div class="row">
 <div class="col-md-2 col-xs-2 col-sm-2" >
-	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="5em" alt="Tu logo"/>	
+  <center>
+	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" alt="Tu logo"/>	
+</center>
 </div>
   <div class="col-md-10 col-xs-10 col-sm-10" id="page-header">
-    <h2 style="text-align: left;padding-top: 50px;font-size: 30px">Department of Electronics and Computer Engineering</h2>
-	  <h4 style="text-align: left;font-size: 20px">Pulchowk Campus, Institute of Engineering, Tribhuvan University</h4>
+    <h2 style="text-align: left;padding-top: 20px; padding-left: 50px;font-size: 30px">Department of Electronics and Computer Engineering</h2>
+	  <h4 style="text-align: left;font-size: 20px;padding-left: 50px; margin-bottom:10px;">Pulchowk Campus, Institute of Engineering, Tribhuvan University</h4>
   </div> 
 </div>
-
+<div> 
+  <!-- style="position: -webkit-sticky; position: sticky;top: 0;"> -->
 <nav class="navbar navbar-inverse" data-spy="affix" id="navv" data-offset-top="197" style="border-color: #080808;">
   <div class="container-fluid nav navbar-nav" id="navv" >
-  <!-- <div class="row">  -->
-       <!-- <div class="nav navbar-nav"> -->
+  
 {% block content %}
-<form class="navbar-form" method="post" novalidate style="width:100%; height: 100%">
+<form class="navbar-form" method= "get" novalidate style="width:100%; height: 100%">
     {% csrf_token %}
     {% for k,v in form.items %}
       <div class="col-md-2 col-xs-2 col-sm-2 active">
-      <!-- <div class="active" style="display: inline-table;"> -->
         <center>
-        <!-- <select id={{v.0}} name={{v.0}} value={{v.0}} type="submit" style="font-size: 15px; font-weight: bold; margin: 5%;"> -->
-          <!-- <form method="post" novalidate > -->
+       
            
-            <select id={{v.header}} name={{v.header}} value={{v.header}} style="font-size: 15px; font-weight: bold;width: 180px;" >
-          <!-- onchange="this.form.submit()" -->
+            <select id={{v.header}} name={{v.header}} value={{v.header}} style="font-size: 15px; font-weight: bold;width: 15rem;" >
 
         {% for items_key, items in v.items %}
         <option name="{{items}}" value="{{items}}" style="font-size: 14px;" >
-          <button type="submit" class="save btn btn-default" name="{{items}}" value="{{items}}" method="post" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">{{items}}</button></option>
+          <button type="submit" class="save btn btn-default" name="{{items}}" value="{{items}}" method="get" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">{{items}}</button></option>
         {% endfor %}
         </select>
       
-      <!-- </form> -->
       </center>
      
     </div>
-    <!-- </div> -->
       {% endfor %}
 
     
 
-      <div class="col-md-2 col-xs-2 col-sm-2 active" style="vertical-align: middle; height: 100%">
+      <div class="col-md-2 col-xs-2 col-sm-2 active" style="vertical-align: middle; height: 100%;">
         <center style="height: 100%; vertical-align: middle;">
-<!-- <<<<<<< HEAD -->
     <button type="submit" class="save btn btn-default" name= "process_btn" value="switching groups" method="post" style="border-radius:12px;cursor:pointer;color:#ffffff;background-color:#138cc4;border: none;font-size: 15px;width:150px; font-weight: bold; vertical-align: top;padding:8px;">DISPLAY</button>
-<!-- =======
-    <button type="submit" class="save btn btn-default" name= "process_btn" value="switching groups" method="post" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">DISPLAY</button>
-    <button id="btn-export" type="submit" class="save btn btn-default" name= "word_btn" value="switching groups" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2% ;" onclick="PrintElem('a');">Export</button>
->>>>>>> f242f2f72049ec2d978e5e110e4bb5877798e1f6 -->
+<!-- 
+    <button id="btn-export" type="submit" class="save btn btn-default" name= "word_btn" value="switching groups" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2% ;" onclick="PrintElem('a');">Export</button> -->
   </center>
   </div>
   
   
-<!-- 
-  <div class="col-md-2 col-xs-2 col-sm-2"> -->
-  <form method="get">
-  <input name="q" type="text" placeholder="Search..." style="width:200px;padding: 10px;">
+  <div class="col-md-2 col-xs-2 col-sm-2">
+  <form >
+  <input name="q" type="text" placeholder="Search..." style="width:20rem;padding: 10px; font-size: 15px;margin-left: 20%; " >
 </form>
+</div>
 </form>
 
   {% endblock %}
 </div>
-</div>
-
-<!-- </div> -->
-
-
 
 </nav>
-
+</div>
 </div>
 <div id='a'>
 <script >
@@ -106,9 +96,9 @@
   var first=0;
   var frst=0;
   document.write('<center><div>')
-  document.write('<h4 class="top_text">Program : {{syllabus.program_full_name}}, Year: {{syllabus.year}},  Part: {{syllabus.part}}</h4>')
+  document.write('<h4 class="top_text" style="font-size: 28px; font-family : Merriweather Sans;">Program : {{syllabus.program_full_name}}, Year: {{syllabus.year}},  Part: {{syllabus.part}}</h4>')
 
-  document.write('<table border=1 class="top_table">');
+  document.write('<table border=1 class="top_table" style="border: 1px solid #ddd;border-collapse: collapse;margin-left:20px;">');
   document.write('<thead>')
 
   document.write('<tr>');
@@ -128,7 +118,7 @@
       //for code no i.e first column
 
       if (isfirst==0){
-        document.write('<th width="15dp" id="code" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;"> '+"Code"+'</th>');
+        document.write('<th width="15dp" id="code" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans; color:#666666;"> '+"Code"+'</th>');
         isfirst=1;  
       }
       
@@ -136,35 +126,35 @@
 
         //for second Column subject_Title
         if(k==1){
-          document.write('<th width="25dp" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;">Title');
+          document.write('<th width="25dp" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Title');
         }
 
         //for third Column Exam_type
         else if(k==2){
-          document.write('<th width="10" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;"> Exam Type');
+          document.write('<th width="10" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;"> Exam Type');
         }
 
         //for 4th column Theory_assessment_final
         else if(k==3){
-          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Assessment');
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Theory <br/> Assessment');
           
         }
 
         else if (k==4){
-          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Final');
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Theory <br/> Final');
         }
         
 
         else if(k==5){
-          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Assessment');
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Practical <br/> Assessment');
 
         }
         else if (k==6){
-          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Final');
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Practical <br/> Final');
         }
 
         else if(k==7){
-          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Total');
         }
 
         document.write('</th>');
@@ -179,7 +169,7 @@
       //for code no i.e first column
 
       if (isfirst==0){
-        document.write('<th width="10dp" id="sn" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;" > '+"S.N."+'</th>');
+        document.write('<th width="10dp" id="sn" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;" > '+"S.N."+'</th>');
         isfirst=1;  
       }
       
@@ -187,27 +177,27 @@
 
         //for second Column subject_Title
         if(k==1){
-          document.write('<th width="25dp" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Code');
+          document.write('<th width="25dp" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;">Course Code');
         }
 
         //for third Column Exam_type
         else if(k==2){
-          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Title');
+          document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;">Course Title');
         }
 
         //for 4th column Theory_assessment_final
         else if(k==3){
-          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Credit');
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;">Credit');
         }
 
         else if(k==4){
-          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Internal');
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;">Internal');
         }
         else if(k==5){
-          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">External');
+          document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;">External');
         }
         else if(k==6){
-          document.write('<th width="20%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
+          document.write('<th width="20%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;border: 1px solid #ddd;color:#666666;font-family: Open Sans;">Total');
         }
         document.write('</th>');
        
@@ -228,52 +218,31 @@
       {% if subject_code != 'level' and subject_code != 'elective_1' and subject_code != 'elective_2' and subject_code != 'elective_3'%}
 
         {% for subject_field,field in subject.items %}
-        document.write('<td style="font-size: 14px; text-align: center;">');
+        document.write('<td style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">');
         document.write('{{ field }}');
         document.write('</td>');
         {% endfor %}
       {% endif %}
 
     document.write('</tr>') 
-    // {% if subject_code == 'total_syllabus' %}
-    // var total_syllabus = {{subject}}
-
-    // {% endif %}
 
   {% endfor %}
   document.write('</tbody>');
   document.write('<tfoot>');
   {% if syllabus.level == 'Bachelors' %}
-    document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center; padding-left: 135px">Total Marks</th><td style="font-size: 14px; text-align: center">{{ syllabus.total_syllabus }}</td></tr>')
+    document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;padding : 3px; padding-left: 132px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Total Marks</th><td style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">{{ syllabus.total_syllabus }}</td></tr>')
   {% endif %}
   {% if syllabus.level == 'Masters' %}
-    document.write('<tr><th id="total" colspan="6" style="font-size: 14px; text-align: center; padding-left: 135px">Total Marks</th><td style="font-size: 14px; text-align: center;">{{ syllabus.total_syllabus }}</td></tr>')
+    document.write('<tr><th id="total" colspan="6" style="font-size: 14px; text-align: center; padding : 3px;padding-left: 132px;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">Total Marks</th><td style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;">{{ syllabus.total_syllabus }}</td></tr>')
   {% endif %}
   
   document.write('</tfoot>');
-
-  // document.write('</table>')
-  // document.write('</div></center>')
-  // document.write('<br/>   ')
-  // document.write('<br/>   ')
-  // document.write('<br/>   ')
 
     {% for subject_code,subject in  syllabus.items %}
 
           {% if subject_code == 'elective_1' or subject_code == 'elective_2' or subject_code == 'elective_3'%}
           {% if subject|length > 0 %}
-            // var isfirst=0;
-            // var first=0;
-            // var frst=0;
-            // document.write('<center><div>')
-            // document.write('<h4 ">Program : {{subject_code}}</h4>')
-
-            // document.write('<table border=1 class="top_table">');
-            // document.write('<thead>')
-
-            // document.write('<tr>');
-            // var no_of_columns = 5;
-
+            
             {% if syllabus.level == 'Bachelors' %}
               no_of_columns = 8;
             {% endif %}
@@ -283,137 +252,36 @@
             {% endif %}
               {% if subject_code == 'elective_1' %}
             {% if syllabus.level == 'Bachelors' %}
-                document.write('<tr><th id="total" colspan="8" style="font-size: 14px; text-align: center;">Elective I</th></tr>')
+                document.write('<tr><th id="total" colspan="8" style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">Elective I</th></tr>')
               {% endif %}
               {% if syllabus.level == 'Masters' %}
-                document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;">Elective I</th></tr>')
+                document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">Elective I</th></tr>')
               {% endif %}
               {% endif %}
 
               {% if subject_code == 'elective_2' %}
             {% if syllabus.level == 'Bachelors' %}
-                document.write('<tr><th id="total" colspan="8" style="font-size: 14px; text-align: center;">Elective II</th></tr>')
+                document.write('<tr><th id="total" colspan="8" style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">Elective II</th></tr>')
               {% endif %}
               {% if syllabus.level == 'Masters' %}
-                document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;">Elective II</th></tr>')
+                document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">Elective II</th></tr>')
               {% endif %}
               {% endif %}
 
               {% if subject_code == 'elective_3' %}
             {% if syllabus.level == 'Bachelors' %}
-                document.write('<tr><th id="total" colspan="8" style="font-size: 14px; text-align: center;">Elective III</th></tr>')
+                document.write('<tr><th id="total" colspan="8" style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">Elective III</th></tr>')
               {% endif %}
               {% if syllabus.level == 'Masters' %}
-                document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;">Elective III</th></tr>')
+                document.write('<tr><th id="total" colspan="7" style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">Elective III</th></tr>')
               {% endif %}
               {% endif %}
             
-            // if('{{syllabus.level}}' == 'Bachelors'){
-            //   for(var k=0;k<no_of_columns;k++){
-                
-            //     //for code no i.e first column
-
-            //     if (isfirst==0){
-            //       document.write('<th width="15dp" id="code" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;"> '+"Code"+'</th>');
-            //       isfirst=1;  
-            //     }
-                
-            //     else{
-
-            //       //for second Column subject_Title
-            //       if(k==1){
-            //         document.write('<th width="25dp" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;">Title');
-            //       }
-
-            //       //for third Column Exam_type
-            //       else if(k==2){
-            //         document.write('<th width="10" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;"> Exam Type');
-            //       }
-
-            //       //for 4th column Theory_assessment_final
-            //       else if(k==3){
-            //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Assessment');
-                    
-            //       }
-
-            //       else if (k==4){
-            //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Final');
-            //       }
-                  
-
-            //       else if(k==5){
-            //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Assessment');
-
-            //       }
-            //       else if (k==6){
-            //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Final');
-            //       }
-
-            //       else if(k==7){
-            //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
-            //       }
-
-            //       document.write('</th>');
-            //     }         
-            //   }
-            // }
-
-            // else{
-            //   isfirst =0 ;
-            //   for(var k=0;k<no_of_columns;k++){
-                
-            //     //for code no i.e first column
-
-            //     if (isfirst==0){
-            //       document.write('<th width="10dp" id="sn" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;" > '+"S.N."+'</th>');
-            //       isfirst=1;  
-            //     }
-                
-            //     else{
-
-            //       //for second Column subject_Title
-            //       if(k==1){
-            //         document.write('<th width="25dp" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Code');
-            //       }
-
-            //       //for third Column Exam_type
-            //       else if(k==2){
-            //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Title');
-            //       }
-
-            //       //for 4th column Theory_assessment_final
-            //       else if(k==3){
-            //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Credit');
-            //       }
-
-            //       else if(k==4){
-            //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Internal');
-            //       }
-            //       else if(k==5){
-            //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">External');
-            //       }
-            //       else if(k==6){
-            //         document.write('<th width="20%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
-            //       }
-            //       document.write('</th>');
-                 
-            //     }         
-            //   }
-
-            // }
-
-            //for values of above header rows 
-
-            // document.write('</tr>');
-            // document.write('</thead>');
-
-            // document.write('<tbody>');
-
             {% for subject_code_1,subject_1 in  subject.items %}
               document.write('<tr>');
                              
                   {% for subject_field,field in subject_1.items %}
-                  document.write('<td style="font-size: 14px; text-align: center;">');
+                  document.write('<td style="font-size: 14px; text-align: center;border: 1px solid #ddd;font-family: Open Sans;color:#666666;padding : 3px;">');
                   document.write('{{ field }}');
                   document.write('</td>');
                   {% endfor %}
@@ -431,8 +299,7 @@ document.write('</tbody>');
             document.write('</table>')
             document.write('</div></center>')
             document.write('<br/>   ')
-            document.write('<br/>   ')
-            document.write('<br/>   ')
+            // document.write('<br/>   ')
 
 
   {% endfor %}
@@ -474,168 +341,6 @@ function PrintElem(elem)
 
     return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // var isfirst=0;
-  // var first=0;
-  // var frst=0;
-  // document.write('<center><div>')
-  // document.write('<table border=1 class="top_table">');
-  // document.write('<tr>');
-  // var no_of_columns = 5;
-
-  // {% if query_list.level == 'Bachelors' %}
-  //   no_of_columns = 8;
-  // {% endif %}
-    
-  // {% if query_list.level == 'Masters' %}
-  //   no_of_columns = 7;
-  // {% endif %}
-  
-  // if('{{query_list.level}}' == 'Bachelors'){
-  //   for(var k=0;k<no_of_columns;k++){
-      
-  //     //for code no i.e first column
-
-  //     if (isfirst==0){
-  //       document.write('<th width="10%" id="code" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;"> '+"Code"+'</th>');
-  //       isfirst=1;  
-  //     }
-      
-  //     else{
-
-  //       //for second Column subject_Title
-  //       if(k==1){
-  //         document.write('<th width="25%" style="font-weight: bold; font-size: 14px; text-align: center; padding-left: 3px; padding-right: 3px;">Title');
-  //       }
-
-  //       //for third Column Exam_type
-  //       else if(k==2){
-  //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;"> Exam Type');
-  //       }
-
-  //       //for 4th column Theory_assessment_final
-  //       else if(k==3){
-  //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Assessment');
-          
-  //       }
-
-  //       else if (k==4){
-  //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Theory <br/> Final');
-  //       }
-        
-
-  //       else if(k==5){
-  //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Assessment');
-
-  //       }
-  //       else if (k==6){
-  //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Practical <br/> Final');
-  //       }
-
-  //       else if(k==7){
-  //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
-  //       }
-
-  //       document.write('</th>');
-  //     }         
-  //   }
-  // }
-
-
-
-  // else{
-  //   isfirst =0 ;
-  //   for(var k=0;k<no_of_columns;k++){
-      
-  //     //for code no i.e first column
-
-  //     if (isfirst==0){
-  //       document.write('<th width="10%" id="sn" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;" > '+"S.N."+'</th>');
-  //       isfirst=1;  
-  //     }
-      
-  //     else{
-
-  //       //for second Column subject_Title
-  //       if(k==1){
-  //         document.write('<th width="25%" width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Code');
-  //       }
-
-  //       //for third Column Exam_type
-  //       else if(k==2){
-  //         document.write('<th width="10%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Course Title');
-  //       }
-
-  //       //for 4th column Theory_assessment_final
-  //       else if(k==3){
-  //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Credit');
-  //       }
-
-  //       else if(k==4){
-  //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Internal');
-  //       }
-  //       else if(k==5){
-  //         document.write('<th width="15%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">External');
-  //       }
-  //       else if(k==6){
-  //         document.write('<th width="20%" style="font-weight: bold; font-size: 14px; text-align: center;padding-left: 3px; padding-right: 3px;">Total');
-  //       }
-  //       document.write('</th>');
-       
-  //     }         
-  //   }
-
-  // }
-
-  // //for values of above header rows 
-
-  // document.write('</tr>');
-
-  // {% for subject_code,subject in  query_list.items %}
-  //   document.write('<tr>');
-   
-  //     {% if subject_code != 'level' %}
-
-  //       {% for subject_field,field in subject.items %}
-  //       document.write('<td style="font-size: 14px; text-align: center;">');
-  //       document.write('{{ field }}');
-  //       document.write('</td>');
-  //       {% endfor %}
-  //     {% endif %}
-
-  //   document.write('</tr>') 
-  // {% endfor %}
-
-  // document.write('</div></center>')
 
 </script>
 </div>

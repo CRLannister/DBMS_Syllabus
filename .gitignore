@@ -1,5 +1,7 @@
-__pycache__/
 data_entry/__pycache__/
 syllabus/__pycache__/
 dependency_env/
+myvenv/
+data_entry_masters/migrations/
+data_entry/migrations/
 

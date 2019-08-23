@@ -2,9 +2,7 @@ SUBJECT_TYPE_CHOICES = (
     ("Compulsory","Compulsory"),
     ("Elective I","Elective I"),
     ("Elective II","Elective II"),
-    ("Elective III","Elective III"),
-    ("Optional","Optional")
-
+    ("Elective III","Elective III")
 
 )
 EXAM_TYPE_CHOICES = (
