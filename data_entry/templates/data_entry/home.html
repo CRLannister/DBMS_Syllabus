@@ -28,15 +28,15 @@
 	<img id="tu_logo" src="{% static 'dataEntry/images/tulogo.png' %}" height="5em" alt="Tu logo"/>	
 </div>
   <div class="col-md-10 col-xs-10 col-sm-10" id="page-header">
-	  <h2 style="vertical-align: middle;"><center style="padding-top: 5%;">Department of Electronics and Computer Engineering</center></h2>
-	  <h4 style="vertical-align: middle;"><center>Pulchowk Campus, Institute of Engineering, Tribhuvan University</center></h4>
+    <h2 style="text-align: left;padding-top: 50px;font-size: 30px">Department of Electronics and Computer Engineering</h2>
+	  <h4 style="text-align: left;font-size: 20px">Pulchowk Campus, Institute of Engineering, Tribhuvan University</h4>
   </div> 
 </div>
 
-<nav class="navbar navbar-inverse" >
+<nav class="navbar navbar-inverse" data-spy="affix" id="navv" data-offset-top="197" style="border-color: #080808;">
   <div class="container-fluid nav navbar-nav" id="navv" >
-
-    <!-- <div class="nav navbar-nav"> -->
+  <!-- <div class="row">  -->
+       <!-- <div class="nav navbar-nav"> -->
 {% block content %}
 <form class="navbar-form" method="post" novalidate style="width:100%; height: 100%">
     {% csrf_token %}
@@ -46,33 +46,47 @@
         <center>
         <!-- <select id={{v.0}} name={{v.0}} value={{v.0}} type="submit" style="font-size: 15px; font-weight: bold; margin: 5%;"> -->
           <!-- <form method="post" novalidate > -->
-        <select id={{v.header}} name={{v.header}} value={{v.header}} style="font-size: 15px; font-weight: bold; margin: 5%;" >
+           
+            <select id={{v.header}} name={{v.header}} value={{v.header}} style="font-size: 15px; font-weight: bold;width: 180px;" >
           <!-- onchange="this.form.submit()" -->
 
         {% for items_key, items in v.items %}
-        <option name="{{items}}" value="{{items}}" style="font-size: 14px;" ><button type="submit" class="save btn btn-default" name="{{items}}" value="{{items}}" method="post" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">{{items}}</button></option>
+        <option name="{{items}}" value="{{items}}" style="font-size: 14px;" >
+          <button type="submit" class="save btn btn-default" name="{{items}}" value="{{items}}" method="post" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">{{items}}</button></option>
         {% endfor %}
         </select>
+      
       <!-- </form> -->
       </center>
-      </div>
+     
+    </div>
     <!-- </div> -->
       {% endfor %}
 
-      <div class="col-md-4 col-xs-4 col-sm-4 active" style="vertical-align: middle; height: 100%">
+    
+
+      <div class="col-md-2 col-xs-2 col-sm-2 active" style="vertical-align: middle; height: 100%">
         <center style="height: 100%; vertical-align: middle;">
-    <button type="submit" class="save btn btn-default" name= "process_btn" value="switching groups" method="post" style="font-size: 15px; font-weight: bold; vertical-align: top; margin-top: 2%;">DISPLAY</button>
+    <button type="submit" class="save btn btn-default" name= "process_btn" value="switching groups" method="post" style="border-radius:12px;cursor:pointer;color:#ffffff;background-color:#138cc4;border: none;font-size: 15px;width:150px; font-weight: bold; vertical-align: top;padding:8px;">DISPLAY</button>
   </center>
   </div>
-  </form>
   
+  
+<!-- 
+  <div class="col-md-2 col-xs-2 col-sm-2"> -->
   <form method="get">
-  <input name="q" type="text" placeholder="Search...">
+  <input name="q" type="text" placeholder="Search..." style="width:200px;padding: 10px;">
+</form>
 </form>
 
   {% endblock %}
 </div>
 </div>
+
+<!-- </div> -->
+
+
+
 </nav>
 
 </div>
@@ -87,7 +101,7 @@
   var first=0;
   var frst=0;
   document.write('<center><div>')
-  document.write('<h4 ">Program : {{syllabus.program_full_name}}, Year: {{syllabus.year}},  Part: {{syllabus.part}}</h4>')
+  document.write('<h4 class="top_text">Program : {{syllabus.program_full_name}}, Year: {{syllabus.year}},  Part: {{syllabus.part}}</h4>')
 
   document.write('<table border=1 class="top_table">');
   document.write('<thead>')
