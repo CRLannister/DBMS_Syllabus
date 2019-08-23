@@ -107,7 +107,7 @@ def dropdown_search(request):
 			if year != 'Year':
 				final_syllabus = query_syllabus_set.filter(year = year)
 			if part != 'Part':
-				final_syllabus = query_syllabus_set.filter(part = part)
+				final_syllabus = final_syllabus.filter(part = part)
 
 
 	else:
