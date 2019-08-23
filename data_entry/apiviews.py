@@ -8,7 +8,7 @@ from django.forms.models import model_to_dict
 
 
 from .models import Department, Level, Program, Subject, Syllabus
-from .serializers import ProgramSerializer, SyllabusSerializer
+from serializers import ProgramSerializer#, SyllabusSerializer
 
 # SearchFunc()
 
