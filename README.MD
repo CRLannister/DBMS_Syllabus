@@ -29,17 +29,17 @@
 ## TODO
 
 ### Html files are located inside templates...
-   - [ ] Maintaining frontEnd
+   - [x] Maintaining frontEnd
 
 ### API
-   - [ ] API Documentation
+   - [x] API Documentation
 
 ### Masters and Bachelors dependency
-   - [ ] Entry
-   - [ ] Views
+   - [x] Entry
+   - [x] Views
 
 ### PDF Download
-   - [ ] PDF
+   - [x] PDF
 
 
  ![Demo](./Git_files/first.png)
