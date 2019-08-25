@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% load staticfiles %}
-	{% load static %}
+  {% load static %}
   <title>Ioe Syllabus Management System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <script src="{% static 'dataEntry/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
-  <link rel="stylesheet" href="static/dataEntry/css/styles.css" media="all">
+  <link media="all" rel="stylesheet" href="{% static 'dataEntry/css/styles.css' %}" >
 </head>
 <body style="font-size: 14px;">
     <div class="topbar"></div>

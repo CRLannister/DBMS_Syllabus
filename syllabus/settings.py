@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd38*)nc8bhmv*2w804*8sfs7dojd=sqn+q03(cljz7&3ymrea_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False#True
+DEBUG = True #False#True
 
 ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = [
+#    'manaslu.pcampus.np'
+#   ]
+# ALLOWED_HOSTS = ['103.5.150.17', 'localhost', '[::1]', '127.0.0.1']
 
 
 # Application definition
@@ -124,5 +128,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
+STATIC_ROOT =  '/static/'# '/static/' #os.path.join(BASE_DIR, "static/")#'syllabus/static/'
+STATIC_URL =  '/static/'#'/static/' #os.path.join(BASE_DIR, 'data_entry/static/')
+STATICFILES_DIRS = [
+    'data_entry/static/',
+    'dependency_env/lib/python3.7/site-packages/django/contrib/admin/static'
+]

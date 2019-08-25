@@ -1,5 +1,8 @@
 Django==2.2.3
+django-core==1.4.1
+djangorestframework==3.10.2
+gnureadline==8.0.0
 psycopg2==2.8.3
 pytz==2019.1
 sqlparse==0.3.0
-djangorestframework==3.10.2
+uWSGI==2.0.18
